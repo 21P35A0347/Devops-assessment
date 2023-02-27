@@ -38,8 +38,6 @@ class MemberJpaRepositoryTest {
         assertThat(memberList).containsExactly(memberA);
 
         List<Member> memberA1 = repository.findByUsername("MemberA");
-        assertThat(memberList).containsExactly(memberA);
-
-
+        assertThat(memberA1).containsExactly(memberA);
     }
 }
