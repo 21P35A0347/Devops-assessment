@@ -21,23 +21,22 @@ class MemberJpaRepositoryTest {
 
     @Autowired
     EntityManager em;
-
     @Autowired
-    MemberJpaRepository repository;
+    MemberJpaRepository memberJpaRepository;
 
     @Test
     public void basicTest() {
         Member member = new Member("MemberA", 11);
-        repository.save(member);
+        memberJpaRepository.save(member);
 
-        Optional<Member> memberOpt = repository.findById(member.getId());
+        Optional<Member> memberOpt = memberJpaRepository.findById(member.getId());
         Member memberA = memberOpt.get();
         assertThat(member).isEqualTo(memberA);
 
-        List<Member> memberList = repository.findAll();
+        List<Member> memberList = memberJpaRepository.findAll();
         assertThat(memberList).containsExactly(memberA);
 
-        List<Member> memberA1 = repository.findByUsername("MemberA");
+        List<Member> memberA1 = memberJpaRepository.findByUsername("MemberA");
         assertThat(memberList).containsExactly(memberA);
 
 
